@@ -29,4 +29,4 @@ wordcount = FOREACH grouped GENERATE group, COUNT(words);
 s = LIMIT wordcount 15;
 
 -- escribe el archivo de salida en el sistema local
-STORE s INTO 'output';
+STORE s INTO 'output' USING PigStorage(',');
