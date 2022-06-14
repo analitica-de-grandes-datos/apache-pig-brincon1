@@ -34,3 +34,10 @@ $ pig -x local -f pregunta.pig
         >>> Escriba su respuesta a partir de este punto <<<
 */
 
+-- cargo los datos
+lines = LOAD 'data.csv' USING PigStorage(',') AS (numero:int, nombre:CHARARRAY, apellido:CHARARRAY, fecha:Datetime, color:CHARARRAY, num:int);
+
+selColumnas = FOREACH lines GENERATE ToString(fecha, 'yyyy-MM-dd'), ToString(fecha, 'MMM,MM,M');
+
+-- escribe el archivo de salida en el sistema local
+STORE selColumnas INTO 'output' USING PigStorage(',');
