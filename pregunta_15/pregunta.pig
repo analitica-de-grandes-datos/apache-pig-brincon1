@@ -32,5 +32,5 @@ bcolor = FILTER selectcolor BY ($0 matches '.*Z.*') AND ($1 matches '.*blue.*');
 --dump bcolor;
 
 -- escribe el archivo de salida en el sistema local
-STORE bcolor INTO 'output';
+STORE bcolor INTO 'output' USING PigStorage(' ');
 
